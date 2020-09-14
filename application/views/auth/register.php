@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                         <?php } ?>
-                        <form class="form-signin" action="<?= base_url('index.php/auth/proses_register'); ?>" method="post">
+                        <form class="form-signin" action="<?= base_url('auth/proses_register'); ?>" method="post">
                             <div class="form-group">
                                 <input type="text" name="name" id="text" class="form-control" placeholder="Name" required>
                             </div>
@@ -60,7 +60,7 @@
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign up</button>
 
                             <div class="text-center mt-3">
-                                <small>Do you have accout? <a href="<?= base_url('index.php/auth/login') ?>">Sign In</a></small>
+                                <small>Do you have accout? <a href="<?= base_url('auth') ?>">Sign In</a></small>
                             </div>
 
                         </form>

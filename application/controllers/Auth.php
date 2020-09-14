@@ -10,7 +10,7 @@ class Auth extends CI_Controller
         $this->load->model('auth_model');
     }
 
-    public function login()
+    public function index()
     {
         $this->load->view('auth/login');
     }
@@ -32,7 +32,7 @@ class Auth extends CI_Controller
             $errors = $this->form_validation->error_array();
             $this->session->set_flashdata('errors', $errors);
             $this->session->set_flashdata('input', $this->input->post());
-            redirect('/index.php/auth/login'); // LOGIN
+            redirect('auth'); // LOGIN
 
         } else {
 
@@ -43,7 +43,7 @@ class Auth extends CI_Controller
             $cek_login = $this->auth_model->cek_login($username);
 
             if ($cek_login == FALSE) {
-                echo '<script>alert("Username yang Anda masukan salah.");window.location.href="' . base_url('/index.php/auth/login') . '";</script>';
+                echo '<script>alert("Username yang Anda masukan salah.");window.location.href="' . base_url('auth') . '";</script>';
             } else {
 
                 if (password_verify($pass, $cek_login->password)) {
@@ -54,7 +54,7 @@ class Auth extends CI_Controller
 
                     redirect('/dashboard');
                 } else {
-                    echo '<script>alert("Username atau Password yang Anda masukan salah.");window.location.href="' . base_url('/index.php/auth/login') . '";</script>';
+                    echo '<script>alert("Username atau Password yang Anda masukan salah.");window.location.href="' . base_url('auth') . '";</script>';
                 }
             }
         }
@@ -86,7 +86,7 @@ class Auth extends CI_Controller
             ];
             $insert = $this->auth_model->register("users", $data);
             if ($insert) {
-                echo '<script>alert("Sukses! Anda berhasil melakukan register. Silahkan login untuk mengakses data.");window.location.href="' . base_url('index.php/auth/login') . '";</script>';
+                echo '<script>alert("Sukses! Anda berhasil melakukan register. Silahkan login untuk mengakses data.");window.location.href="' . base_url('auth') . '";</script>';
             }
         }
     }
@@ -94,6 +94,6 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        echo '<script>alert("Sukses! Anda berhasil logout."); window.location.href="' . base_url('index.php/auth/login') . '";</script>';
+        echo '<script>alert("Sukses! Anda berhasil logout."); window.location.href="' . base_url('auth') . '";</script>';
     }
 }
