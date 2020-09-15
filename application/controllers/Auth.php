@@ -12,16 +12,25 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        if ($this->session->userdata('username')) {
+            redirect('dashboard');
+        }
+
         $this->load->view('auth/login');
     }
 
     public function register()
     {
+        if ($this->session->userdata('username')) {
+            redirect('dashboard');
+        }
+
         $this->load->view('auth/register');
     }
 
     public function proses_login()
     {
+
         $this->load->library('form_validation');
         $this->load->library('session');
 
@@ -52,7 +61,7 @@ class Auth extends CI_Controller
                     $this->session->set_userdata('username', $cek_login->username);
                     $this->session->set_userdata('name', $cek_login->name);
 
-                    redirect('/dashboard');
+                    redirect('dashboard');
                 } else {
                     echo '<script>alert("Username atau Password yang Anda masukan salah.");window.location.href="' . base_url('auth') . '";</script>';
                 }

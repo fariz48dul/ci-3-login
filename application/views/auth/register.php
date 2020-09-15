@@ -46,7 +46,7 @@
                         <?php } ?>
                         <form class="form-signin" action="<?= base_url('auth/proses_register'); ?>" method="post">
                             <div class="form-group">
-                                <input type="text" name="name" id="text" class="form-control" placeholder="Name" required>
+                                <input type="text" name="name" id="text" class="form-control" placeholder="Full Name" required>
                             </div>
 
                             <div class="form-group">
